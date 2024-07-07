@@ -1,0 +1,20 @@
+@startuml
+start
+:start;
+if(CHoose) then(<color:red>True)
+    :Activity1;
+    if() then (false)
+        :Activity3;
+        kill
+    else(true)
+        :Activity2;
+        stop;
+    :Activity4;
+    stop;
+    endif
+else(false)
+    :Activity5 and
+    **Activity7**;
+    :Activity6;
+    end;
+@enduml
