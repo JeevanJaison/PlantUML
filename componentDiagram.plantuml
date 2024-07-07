@@ -1,0 +1,29 @@
+@startuml
+skinparam componentStyle uml1
+package SOmeGroup{
+[ATM Machine] as atm
+[Client Desktop] as cd
+[Web page]as wp
+}
+[Card Reader] as cr
+database "Mysql"{
+[Employee Console]as ec #Red
+[Customer Console]as cc
+}
+[Bank Deposit] as bd
+atm-right-"Atm Transaction"
+atm-left->cc
+atm .down.>bd
+cd .up.> bd
+wp .up.>bd
+cr .up.>bd
+cd -up-ec
+interface "Client Desktop transaction" as int1
+cd -- int1
+wp --"Online Transaction"
+cr --"Web merchant transaction"
+cc -- wp
+cc -- cr
+
+
+@enduml
