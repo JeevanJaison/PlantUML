@@ -1,0 +1,46 @@
+@startuml
+class Customer{
+    +name
+    +age
+    +aadhar
+    #salary
+    getDetails()
+}
+
+class Bank{
+    #protected
+    +location
+    manager
+    createAccount()
+}
+class ATM{
+    amount
+    withdraw()
+}
+class Transaction{
+    #transID
+    calcAmount()
+}
+class Account{
+    +upi
+    #ifsc
+    #AccountNo
+    -password
+    accountSummary()
+}
+class currentAccout extends Account{
+    balance
+    summary()
+}
+class SavingsAccount extends Account{
+    balance
+    summary()
+}
+Customer "1"-->"many"ATM:has
+Customer "many"--"1"Bank
+Customer "1" -->"many" Account:has
+Bank "1"-->"many"ATM:has
+Bank "1" --> "many" Account:holds
+ATM "1"--"many" Transaction
+
+@enduml
