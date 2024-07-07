@@ -2,16 +2,22 @@
 scale 2
 title "Use Case Diagram"
 left to right direction
+skinparam handwritten true
 skinparam actorStyle awesome
-actor user as u
-actor amin as a
+actor <<user>> as u 
+actor amin as a #pink;line:red;line.bold;text:green
 rectangle ATM{
-    usecase "Withdraw Money" as wm
+    usecase "Withdraw Money" as wm 
     usecase "Deposit Money" as dm
     usecase "CheckBalance" as cb
     usecase "ChangePin" as cp
 }
-u--wm: "Withdraw money"
+
+skinparam usecase{
+    BackgroundColor DarkSeaGreen
+    BorgerColor DarkSlateGray
+}
+u--|>wm: "Withdraw money"
 u--dm
 u--cb
 u--cp
@@ -19,4 +25,20 @@ wm--a
 dm--a
 cb--a
 cp--a
+
+wm .> cb: "Check Balance"
+
+note top of u: This is user actor
+note bottom of a
+    This is
+    a note of
+    Admin
+end note
+
+json JSON{
+   "fruit":"Apple",
+   "size":"Large",
+   "color": ["Red", "Green"]
+}
+
 @enduml
