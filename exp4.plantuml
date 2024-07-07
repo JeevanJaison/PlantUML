@@ -1,0 +1,21 @@
+@startuml
+class Customer{
+    +name
+    +age
+    +aadhar
+    #salary
+    getDetails()
+}
+class "Bank of Baroda" as bank #red{
+    #account
+    +location
+    ~manager
+    createAccount()
+}
+Customer "many" -[dotted,thickness=20]- "1" bank #Yellow;text:green :contact:continue
+note left of Customer #LightBlue 
+<s> THis </s> is the <i> customer </i> of 
+<b> Bank of Baroda </b>
+end note
+
+@enduml

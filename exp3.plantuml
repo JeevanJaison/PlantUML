@@ -1,0 +1,87 @@
+@startuml
+start
+#Green/white:Start;
+if()then(true)
+    :Activity 1;
+    if(CHOOSE) then (//false// OR \n**WRONG**)
+        :Activity 3;
+        kill
+    else (true)
+        :Activity 2;
+        stop
+    :Activity 4;
+    stop
+    end if
+else (false)
+    :Activity 5;
+    :Activity 6;
+    end
+end if
+
+start
+switch(ANy)
+    case (condition)
+        :t1;
+    case (condition2)
+        :t2;
+    case (condition3)
+        :t3;
+endswitch
+end
+
+
+' Repeat
+start
+    repeat
+        :R 1;
+        : r 2;
+    repeat while(more whiles) is (yes)
+    :hello;
+    end
+
+start
+    repeat
+        :e2 ;
+        :axc;
+        backward:the ;
+    repeat while(more whiles) is (yes)
+    end
+
+start
+    repeat
+        if(something went WRONG) then(true)
+            :e2 ;
+            break
+        endif
+            :axc;
+        backward:the ;
+    repeat while(more whiles) is (yes)
+    end
+
+start
+    while (data available)
+        :read;
+        :generate;
+    endwhile
+    :outsid;
+end
+
+start
+    fork
+        :re;
+    fork again
+        :eel;
+    end merge
+    :re;
+end
+
+start
+    split
+        -[hidden]->
+        :ewsd;
+        floating note left:dfczdas
+    split again
+        (f);
+    end split
+end 
+@enduml

@@ -1,0 +1,20 @@
+@startuml
+left to right direction
+skinparam actorStyle awesome
+actor user as u #green
+actor admin as ad #Yellow
+package ATM #LightYellow{
+    usecase "Withdraw money" as wm #lightblue
+    usecase "Deposit money" as dm
+    usecase "Check balance" as cb
+    usecase "Change pin" as cp
+}
+u-->dm #red :Deposit money
+u-->wm
+u-->cb
+u-->cp
+dm--|>ad
+wm--ad
+cb--ad
+cp--ad
+@enduml
