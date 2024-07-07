@@ -1,0 +1,26 @@
+@startuml
+state ATM #lightblue{
+    state "Idle" as i
+    state "Card Insertion" as ci #lightgrey:Read card
+    state "Choose account" as ca :User selects \naccount
+    state "Withdraw money" as wa :Read amount to \n withdraw
+    state "Read password" as rp :Read the \nuser's pin
+    state "Processing Transaction" as pt:User Transaction
+    state "Dispense Cash" as dc:dispense
+    state "Eject card" as ej :eject
+    state ch <<choice>>
+    state ch1 <<choice>>
+    [*]-left->i
+    i-left->ci
+    ci-left->ca
+    ca-->wa:Withdraw amount
+    wa-right->rp:amount \nentered
+    rp-->ch:Verify password
+    ch-right->pt:Correct \npin
+    pt-->ch1:check status
+    ch1-->dc:Successfull transaction
+    ch1-->ej:Cash dispensed
+    ch-->ej:Incorrect pin
+    ej--right>[*]
+}
+@enduml
