@@ -1,0 +1,55 @@
+@startuml
+
+title "Sequence Diagram"
+header "Page Header"
+
+!pragma teoz true
+
+participant Customer as c #red/white
+box "UI" #lightblue
+participant "Online Shopping System" as oss
+box "Cart" #lightyellow
+participant "Shopping cart" as sc
+end box
+end box
+database db
+participant "Payment Gateway" as pg
+
+autonumber
+== Initial steps ==
+c-[#red]>oss:browse()
+
+activate oss #indigo
+
+c->oss:search(item)
+oss->c:listSearchResult(items)
+autonumber 20
+c->oss:addToCart(item)
+activate oss #red
+oss->sc:addItem(item)
+== Payment ==
+c->oss:checkOut()
+... Loading ...
+
+note left
+Here the autonumber is %autonumber%
+end note
+
+note over c
+    Should have account 
+    in that bank.
+end note
+
+/ note over oss
+    Should have a 
+    mobile.
+end note
+autonumber 100 10
+oss->pg:processPayment()
+deactivate oss
+|||
+pg-->oss:paymentStatus(Success)
+oss->c:orderConfirmation()
+deactivate oss
+
+@enduml
