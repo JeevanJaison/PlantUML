@@ -1,0 +1,19 @@
+@startuml
+
+left to right direction
+node "Bank Server "as bs{
+    database "Bank Database " as db
+    [Transaction Processor] as tp 
+}
+
+node "ATM Machine" as atm{
+    [Card Reader] as cr
+    [Cash Dispenser] as cd
+    [Bank Interface] as bi
+    [User interface] as ui
+    bi -- ui:Sends Transaction Request
+}
+ui -[bold]-cr
+ui -[thickness=4]-cd
+cloud cloudDemo as cl
+@enduml
