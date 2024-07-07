@@ -9,7 +9,7 @@ if(CHoose) then(<color:red>True)
     else(true)
         :Activity2;
         stop;
-    :Activity4;
+    #red/white:Activity4;
     stop;
     endif
 else(false)
@@ -17,4 +17,86 @@ else(false)
     **Activity7**;
     :Activity6;
     end;
+endif
+
+' Switch
+
+start
+switch(test)
+    case (Condition1)
+        :T1;
+    case (Condition2)
+        :T2;
+    case (Condition3)
+        :T3;
+    case (Condition4)
+        :T4;
+    endswitch
+    #lightgreen:Final;
+    end
+
+' Repeat
+start
+repeat
+    :read data;
+    :generate diagrams;
+    backward:THis is backward;
+repeat while(Need more?) is (yes)
+->no;
+stop
+
+' Repeat with break
+start
+repeat
+    :Test something;
+    if(SOmething went wrong)then (no)
+        #lightGreen:OK;
+        break
+    endif
+    ->nok;
+    :Alert;
+    repeat while(Something went wrong) is (yes) not(n0)
+    ->merged stop;
+    :alert;
+    stop
+
+'Simple While
+while(data available)
+    :read;
+    :generate;
+endwhile
+:outside while;
+stop
+
+' Fork
+start
+fork
+    :action1;
+fork again
+    :action 2;
+endfork {label demo}
+stop
+
+'Fork with end merge
+start
+fork
+    :action 1;
+fork again 
+    :action 2;
+end merge
+stop
+
+' Split
+start
+split
+    -[hidden]->
+    :a1;
+split again
+    :a2;
+    floating note right
+    This is a 
+    multi-line floating note.
+    end note
+end split
+:b;
 @enduml
