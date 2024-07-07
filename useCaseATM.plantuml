@@ -1,0 +1,21 @@
+@startuml
+scale 2
+title "Use Case Diagram"
+left to right direction
+actor user as u
+actor amin as a
+rectangle ATM{
+    usecase "Withdraw Money" as wm
+    usecase "Deposit Money" as dm
+    usecase "CheckBalance" as cb
+    usecase "ChangePin" as cp
+}
+u--wm
+u--dm
+u--cb
+u--cp
+wm--a
+dm--a
+cb--a
+cp--a
+@enduml
